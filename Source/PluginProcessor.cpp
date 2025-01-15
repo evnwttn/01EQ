@@ -166,7 +166,8 @@ bool _01EQAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* _01EQAudioProcessor::createEditor()
 {
-    return new _01EQAudioProcessorEditor (*this);
+//    return new _01EQAudioProcessorEditor (*this);
+    return new juce::GenericAudioProcessorEditor(*this);
 }
 
 //==============================================================================
@@ -202,13 +203,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout
             slopeOptions.add(str);
         };
        
-        layout.add(std::make_unique<juce::AudioParameterFloat>("LowCut Slope",
+        layout.add(std::make_unique<juce::AudioParameterChoice>("LowCut Slope",
                                                                "LowCut Slope",
-                                                               slopeOptions,
-                                                               0));
-        
-        layout.add(std::make_unique<juce::AudioParameterFloat>("HighCut Slope",
-                                                               "HighCut Slope",
                                                                slopeOptions,
                                                                0));
         
@@ -216,6 +212,12 @@ juce::AudioProcessorValueTreeState::ParameterLayout
                                                                "HighCut Freq",
                                                                juce::NormalisableRange<float>(20.f, 20000.f, 1.f, 1.f),
                                                                20000.f));
+        
+        layout.add(std::make_unique<juce::AudioParameterChoice>("HighCut Slope",
+                                                               "HighCut Slope",
+                                                               slopeOptions,
+                                                               0));
+        
         
         layout.add(std::make_unique<juce::AudioParameterFloat>("Peak Freq",
                                                                "Peak Freq",
