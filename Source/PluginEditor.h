@@ -14,7 +14,7 @@
 // look & feel class
 struct LookAndFeel : juce::LookAndFeel_V4
 {
-// retrieved from juce::Slider // LookAndFeelMethods
+    // retrieved from juce::Slider // LookAndFeelMethods
     void drawRotarySlider (juce::Graphics&,
                                    int x, int y, int width, int height,
                                    float sliderPosProportional,
@@ -30,24 +30,24 @@ struct RotarySliderWithLabels : juce::Slider
     param(&rap),
     suffix(unitSuffix)
     {
-// set instance as look & feel object in constructor
+        // set instance as look & feel object in constructor
         setLookAndFeel(&lnf);
     }
     
-// unset in destructor
+    // unset in destructor
     ~RotarySliderWithLabels()
     {
         setLookAndFeel(nullptr);
     }
     
-// custom visuals - slider bounds, text height, display string
+    // custom visuals - slider bounds, text height, display string
     void paint(juce::Graphics& g) override;
     juce::Rectangle<int> getSliderBounds() const;
     int getTextHeight() const { return 14; }
     juce::String getDisplayString() const;
     
     private:
-// look & feel instance
+    // look & feel instance
     LookAndFeel lnf;
     
         juce::RangedAudioParameter* param;
