@@ -91,6 +91,10 @@ private:
     
     juce::Rectangle<int> getRenderArea();
     juce::Rectangle<int> getAnalysisArea();
+    
+    SingleChannelSampleFifo<_01EQAudioProcessor::BlockType>* leftChannelFifo;
+//    3:32:30
+    
 };
 
 //==============================================================================
